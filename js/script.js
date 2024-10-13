@@ -129,6 +129,12 @@ async function loadPlaylists(folders) {
 
       audioBar.value = 0;
 
+      //To automatically open side tab after selecting playlist
+      var displayValue = window.getComputedStyle(menuButton).display;
+      if (!(displayValue == "none")) {
+        menuButton.click();
+    } 
+
       //Song Name, Artist name and Image Update
       let smallPlaylistImage = document.querySelector(".smallPlaylistImage");
       smallPlaylistImage.src = `/media/${folder}/cover.jpeg`;
