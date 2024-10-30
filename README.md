@@ -8,7 +8,7 @@ A sleek web-based music player that fetches, organizes, and plays audio files di
 - **Dynamic Playlists**: Automatically fetches playlists from folders, each with its own cover and metadata.
 - **Responsive Interface**: Features a side-tab library for easy song and playlist navigation.
 - **Playback Controls**: Play, pause, previous, next, and volume controls with a functional seek bar.
-- **Auto-Updating UI**: Displays the currently playing song and artist, with smooth transitions.
+- **Auto-Updating UI**: Displays the currently playing song and artist.
 
 ## Project Structure
 
