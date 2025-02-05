@@ -15,6 +15,7 @@
 body {
   background-color: black;
   height: 100vh;
+  height: 100dvh;
   color: white;
 
   /* Custom Scrollbar for Webkit Browsers */
@@ -42,6 +43,7 @@ body {
 .container {
   width: 100vw;
   height: 90vh;
+  height: 90dvh;
   display: flex;
   gap: 10px;
   /* background-color: rgb(63, 63, 63); */
@@ -275,6 +277,7 @@ body {
 
 .bottom {
   height: 10vh;
+  height: 10dvh;
   flex-grow: 1;
   margin: 0 10px;
   /* background-color: #121212; */
@@ -521,6 +524,7 @@ input[type="range"]:focus::-moz-range-thumb {
 
   .bottom {
     height: 20vh;
+    height: 20dvh;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
@@ -528,6 +532,7 @@ input[type="range"]:focus::-moz-range-thumb {
   }
   .container {
     height: 80vh;
+    height: 80dvh;
   }
 
   .volume {
