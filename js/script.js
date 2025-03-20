@@ -1,3 +1,5 @@
+//This Script Fetches songs from a folder and displays them in a playlist
+
 //Function to Get Folders
 async function loadFolders() {
   let r = await fetch("/media/");
