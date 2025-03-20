@@ -2,6 +2,10 @@
 
 A sleek web-based music player that fetches, organizes, and plays audio files directly from a folder structure. The app supports dynamic playlists and song libraries, offering seamless navigation, playlist organization, and volume control with a minimalist interface.
 
+## Live Demo Link  
+
+[Music App](https://bilalzulfiqar-pk.github.io/Music-App/)
+
 ## Features
 
 - **Fetch and Play Songs**: Loads audio files from specified folders and plays them in a player with controls.
