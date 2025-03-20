@@ -4,7 +4,7 @@ A sleek web-based music player that fetches, organizes, and plays audio files. T
 
 ## Live Demo Link  
 
-[Click here to view the Music App](https://bilalzulfiqar-pk.github.io/Music-App/)
+[Music App](https://bilalzulfiqar-pk.github.io/Music-App/)
 
 ## Features  
 
