@@ -1,51 +1,19 @@
-//This Script Fetches songs from a folder and displays them in a playlist
+//This Script Fetches songs with relative paths and displays them in a playlist
 
 //Function to Get Folders
 async function loadFolders() {
-  let r = await fetch("/media/");
-  let text = await r.text();
-
-  // Parse the fetched text into a DOM object
-  let parser = new DOMParser();
-  let doc = parser.parseFromString(text, "text/html");
-
-  // Now you can use querySelector or querySelectorAll to find <a> tags
-  let anchors = doc.querySelectorAll("a");
-
-  let folders = [];
-
-  anchors.forEach((anchor) => {
-    if (anchor.href.endsWith("/")) {
-      str = anchor.href.split("/")[anchor.href.split("/").length - 2];
-      folders.push(str);
-    }
-  });
-  return folders.slice(1);
+  let r = await fetch("./media/media.json"); // Load folders list from JSON
+  let data = await r.json();
+  return data.folders.map((folder) => folder.name); // Return only folder names
 }
 
 // Function to Get Full Names Array
 async function getNames(folder) {
-  let r = await fetch(`/media/${folder}/`);
-  let text = await r.text();
-
-  // Parse the fetched text into a DOM object
-  let parser = new DOMParser();
-  let doc = parser.parseFromString(text, "text/html");
-
-  // Now you can use querySelector or querySelectorAll to find <a> tags
-  let anchors = doc.querySelectorAll("a");
-
-  let Fullnames = [];
-
-  anchors.forEach((anchor) => {
-    if (anchor.href.endsWith(".mp3")) {
-      // console.log(anchor.href)
-      strFull = anchor.href.split("/")[anchor.href.split("/").length - 1];
-      Fullnames.push(strFull);
-    }
-  });
-
-  return Fullnames;
+  let r = await fetch("./media/media.json"); // Load JSON
+  let data = await r.json();
+  
+  let folderData = data.folders.find(f => f.name === folder);
+  return folderData ? folderData.songs : [];
 }
 
 let songNameParagraph = document.querySelector(".song-name");
@@ -53,7 +21,12 @@ let artistNameParagraph = document.querySelector(".artist-name");
 
 //Function to populate Songs
 async function loadSongs(folder) {
+
+  console.log('Folder:',folder);
+
   let Fullnames = await getNames(folder);
+
+  console.log("1.Full Names:", Fullnames);
 
   let songLists = document.querySelector(".songs-list");
   songLists.innerHTML = "";
@@ -62,7 +35,7 @@ async function loadSongs(folder) {
     let divSong = document.createElement("div");
     divSong.classList.add("song");
     // divSong.classList.add("visible");
-    
+
     //To get song name and artist name from full string
     let songName = fullName.replaceAll("%20", " ").split(" - ")[0].trim();
     let artistName = fullName
@@ -71,13 +44,15 @@ async function loadSongs(folder) {
       .trim()
       .slice(0, -4);
 
-    divSong.innerHTML = `<img class="song-svg" src="/svg/song.svg" alt="" />
+    console.log("Song",songName,"AR",artistName);
+
+    divSong.innerHTML = `<img class="song-svg" src="./svg/song.svg" alt="" />
             <p>${songName}</p>
-            <img class="play-overlay" src="/svg/play.svg" alt="" />`;
+            <img class="play-overlay" src="./svg/play.svg" alt="" />`;
 
     divSong.addEventListener("click", () => {
       playSong(folder, fullName);
-      playButton.src = "svg/pause.svg";
+      playButton.src = "./svg/pause.svg";
 
       // console.log(songName, artistName);
 
@@ -89,18 +64,20 @@ async function loadSongs(folder) {
       var displayValue = window.getComputedStyle(menuButton).display;
       if (!(displayValue == "none")) {
         crossButton.click();
-    } 
+      }
     });
 
     songLists.appendChild(divSong);
 
-    setTimeout(function() {
-      divSong.classList.add('visible');
-  }, 10);
+    setTimeout(function () {
+      divSong.classList.add("visible");
+    }, 10);
   }
 
   //setting first song of playlist automatically
-  audio.src = `/media/${folder}/${Fullnames[0]}`;
+  audio.src = `./media/${folder}/${Fullnames[0]}`;
+
+  console.log("Audio.src:",audio.src);
 
   //setting full names to global
   SongFullNames = new Array(...Fullnames);
@@ -111,7 +88,7 @@ async function loadPlaylists(folders) {
   let playlists = document.querySelector(".playlists");
 
   for (const folder of folders) {
-    let r = await fetch(`/media/${folder}/info.json`);
+    let r = await fetch(`./media/${folder}/info.json`);
     let j = await r.json();
     let playlistName = j.name;
     // console.log(playlistName);
@@ -119,8 +96,8 @@ async function loadPlaylists(folders) {
     let divCard = document.createElement("div");
     divCard.classList.add("card");
     divCard.innerHTML = `<div class="card-image">
-              <img src="/media/${folder}/cover.jpeg" alt="playlist image" />
-              <img class="play-round" src="svg/playround.svg" alt="round play button">
+              <img src="./media/${folder}/cover.jpeg" alt="playlist image" />
+              <img class="play-round" src="./svg/playround.svg" alt="round play button">
             </div>
             <div class="card-text">
               <p>${playlistName}</p>
@@ -135,11 +112,11 @@ async function loadPlaylists(folders) {
       var displayValue = window.getComputedStyle(menuButton).display;
       if (!(displayValue == "none")) {
         menuButton.click();
-    } 
+      }
 
       //Song Name, Artist name and Image Update
       let smallPlaylistImage = document.querySelector(".smallPlaylistImage");
-      smallPlaylistImage.src = `/media/${folder}/cover.jpeg`;
+      smallPlaylistImage.src = `./media/${folder}/cover.jpeg`;
 
       let fullNames = await getNames(folder);
       // console.log(fullNames[0]);
@@ -155,7 +132,7 @@ async function loadPlaylists(folders) {
       artistNameParagraph.innerHTML = artistName;
 
       // To not autoplay
-      playButton.src = "svg/play2.svg";
+      playButton.src = "./svg/play2.svg";
 
       // To autoplay
       // audio.play();
@@ -209,20 +186,12 @@ function formatTime(seconds) {
 
 //Function to Play Audio File
 function playSong(folder, song) {
-  let path = `/media/${folder}/${song}`;
+  let path = `./media/${folder}/${song}`;
   // console.log(path);
 
   audio.src = path;
   audio.play();
 }
-
-async function main() {
-  let folders = await loadFolders();
-  // console.log(folders);
-  await loadPlaylists(folders);
-}
-
-main();
 
 //Hamburger Button
 let menuButton = document.querySelector(".menu-svg");
@@ -265,7 +234,7 @@ previousButton.addEventListener("click", () => {
       let index = SongFullNames.indexOf(song);
       // console.log(index)
       if (index >= 1) {
-        let path = `/media/${folder}/${SongFullNames[index - 1]}`;
+        let path = `./media/${folder}/${SongFullNames[index - 1]}`;
         // console.log(path);
 
         let songName = SongFullNames[index - 1]
@@ -299,7 +268,7 @@ nextButton.addEventListener("click", () => {
       let index = SongFullNames.indexOf(song);
       // console.log(index)
       if (index < SongFullNames.length - 1) {
-        let path = `/media/${folder}/${SongFullNames[index + 1]}`;
+        let path = `./media/${folder}/${SongFullNames[index + 1]}`;
         // console.log(path);
 
         let songName = SongFullNames[index + 1]
@@ -327,10 +296,10 @@ playButton.addEventListener("click", () => {
   if (!audio.src == "") {
     if (!audio.paused) {
       audio.pause();
-      playButton.src = "svg/play2.svg";
+      playButton.src = "./svg/play2.svg";
     } else {
       audio.play();
-      playButton.src = "svg/pause.svg";
+      playButton.src = "./svg/pause.svg";
     }
   }
 });
@@ -342,9 +311,9 @@ volumeRange.addEventListener("input", () => {
   // volume = volumeRange.value / 100;
 
   if (volumeRange.value > 0) {
-    speakerButton.src = "svg/speaker.svg";
+    speakerButton.src = "./svg/speaker.svg";
   } else {
-    speakerButton.src = "svg/mute.svg";
+    speakerButton.src = "./svg/mute.svg";
   }
 });
 
@@ -354,12 +323,21 @@ let volume = 0.9;
 speakerButton.addEventListener("click", () => {
   if (volumeRange.value > 0) {
     volume = volumeRange.value / 100;
-    speakerButton.src = "svg/mute.svg";
+    speakerButton.src = "./svg/mute.svg";
     volumeRange.value = 0;
     audio.volume = 0;
   } else {
-    speakerButton.src = "svg/speaker.svg";
+    speakerButton.src = "./svg/speaker.svg";
     volumeRange.value = volume * 100;
     audio.volume = volume;
   }
 });
+
+
+async function main() {
+  let folders = await loadFolders();
+  console.log(folders);
+  await loadPlaylists(folders);
+}
+
+main();

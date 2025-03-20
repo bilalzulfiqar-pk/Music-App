@@ -1,0 +1,17 @@
+{
+    "folders": [
+      {
+        "name": "nfak_remix",
+        "songs": ["Mere Rashq E Qamar (Remix) - Nusrat Fateh Ali Khan.mp3"],
+        "cover": "cover.jpeg",
+        "info": "info.json"
+      },
+      {
+        "name": "songs",
+        "songs": ["Tu hai kahan - AUR.mp3", "Your Eyes - Barney Sku.mp3"],
+        "cover": "cover.jpeg",
+        "info": "info.json"
+      }
+    ]
+  }
+  
