@@ -2,9 +2,9 @@
 
 A sleek web-based music player that fetches, organizes, and plays audio files. The app supports dynamic playlists and song libraries, offering seamless navigation, playlist organization, and volume control with a minimalist interface.  
 
-## Live Demo  
+## Live Demo Link  
 
-[View the Music App on GitHub Pages](https://bilalzulfiqar-pk.github.io/Music-App/)
+[Click here to view the Music App](https://bilalzulfiqar-pk.github.io/Music-App/)
 
 ## Features  
 
