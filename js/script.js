@@ -11,8 +11,8 @@ async function loadFolders() {
 async function getNames(folder) {
   let r = await fetch("./media/media.json"); // Load JSON
   let data = await r.json();
-  
-  let folderData = data.folders.find(f => f.name === folder);
+
+  let folderData = data.folders.find((f) => f.name === folder);
   return folderData ? folderData.songs : [];
 }
 
@@ -21,7 +21,6 @@ let artistNameParagraph = document.querySelector(".artist-name");
 
 //Function to populate Songs
 async function loadSongs(folder) {
-
   // console.log('Folder:',folder);
 
   let Fullnames = await getNames(folder);
@@ -225,14 +224,18 @@ let volumeRange = document.querySelector(".volume-range");
 
 //Previous Button
 previousButton.addEventListener("click", () => {
-  let song = audio.src.split("/")[audio.src.split("/").length - 1];
+  let song = audio.src.split("/")[audio.src.split("/").length - 1].replaceAll("%20", " ");
   let folder = audio.src.split("/")[audio.src.split("/").length - 2];
+
+  // console.log(audio.src);
+  // console.log(song, folder);
+  // console.log(SongFullNames);
 
   // console.log(SongFullNames, song);
   if (SongFullNames.length > 0) {
     if (SongFullNames.includes(song)) {
       let index = SongFullNames.indexOf(song);
-      // console.log(index)
+      // console.log(index);
       if (index >= 1) {
         let path = `./media/${folder}/${SongFullNames[index - 1]}`;
         // console.log(path);
@@ -259,7 +262,7 @@ previousButton.addEventListener("click", () => {
 
 //Next Button
 nextButton.addEventListener("click", () => {
-  let song = audio.src.split("/")[audio.src.split("/").length - 1];
+  let song = audio.src.split("/")[audio.src.split("/").length - 1].replaceAll("%20", " ");
   let folder = audio.src.split("/")[audio.src.split("/").length - 2];
 
   // console.log(SongFullNames, song);
@@ -286,6 +289,10 @@ nextButton.addEventListener("click", () => {
 
         audio.src = path;
         audio.play();
+
+        if (!audio.paused) {
+          playButton.src = "./svg/pause.svg";
+        }
       }
     }
   }
@@ -332,7 +339,6 @@ speakerButton.addEventListener("click", () => {
     audio.volume = volume;
   }
 });
-
 
 async function main() {
   let folders = await loadFolders();
