@@ -22,11 +22,11 @@ let artistNameParagraph = document.querySelector(".artist-name");
 //Function to populate Songs
 async function loadSongs(folder) {
 
-  console.log('Folder:',folder);
+  // console.log('Folder:',folder);
 
   let Fullnames = await getNames(folder);
 
-  console.log("1.Full Names:", Fullnames);
+  // console.log("1.Full Names:", Fullnames);
 
   let songLists = document.querySelector(".songs-list");
   songLists.innerHTML = "";
@@ -44,7 +44,7 @@ async function loadSongs(folder) {
       .trim()
       .slice(0, -4);
 
-    console.log("Song",songName,"AR",artistName);
+    // console.log("Song",songName,"AR",artistName);
 
     divSong.innerHTML = `<img class="song-svg" src="./svg/song.svg" alt="" />
             <p>${songName}</p>
@@ -77,7 +77,7 @@ async function loadSongs(folder) {
   //setting first song of playlist automatically
   audio.src = `./media/${folder}/${Fullnames[0]}`;
 
-  console.log("Audio.src:",audio.src);
+  // console.log("Audio.src:",audio.src);
 
   //setting full names to global
   SongFullNames = new Array(...Fullnames);
@@ -336,7 +336,7 @@ speakerButton.addEventListener("click", () => {
 
 async function main() {
   let folders = await loadFolders();
-  console.log(folders);
+  // console.log(folders);
   await loadPlaylists(folders);
 }
 

@@ -1,17 +1,69 @@
 {
-    "folders": [
-      {
-        "name": "nfak_remix",
-        "songs": ["Mere Rashq E Qamar (Remix) - Nusrat Fateh Ali Khan.mp3"],
-        "cover": "cover.jpeg",
-        "info": "info.json"
-      },
-      {
-        "name": "songs",
-        "songs": ["Tu hai kahan - AUR.mp3", "Your Eyes - Barney Sku.mp3"],
-        "cover": "cover.jpeg",
-        "info": "info.json"
-      }
-    ]
-  }
-  
+  "folders": [
+    {
+      "name": "naats_and_more",
+      "songs": [
+        "Asma ul Husna - Maher Zain.mp3",
+        "Asma Un Nabi - Unknown.mp3",
+        "Dar-e-Nabi Par Parha Rahoon Ga - Qari Waheed Zafar Qasmi.mp3",
+        "Faslon Ko Takalluf Hai - Qari Waheed Zafar Qasmi.mp3",
+        "Qasida-e-Burda Sharif - Mahmood Ul Hassan Ashrafi.mp3",
+        "Salaat O Salaam - Ahmed Raza Attari.mp3",
+        "Soz-e-Dil Chahiye - Qari Waheed Zafar Qasmi.mp3",
+        "Zahe Muqaddar Huzoor-e-Haq Se - Qari Waheed Zafar Qasmi.mp3"
+      ],
+      "cover": "cover.jpeg",
+      "info": "info.json"
+    },
+    {
+      "name": "nfak_original",
+      "songs": [
+        "Aag Daman Mein Lag Jaye Gi (Complete Original Version) - Nusrat Fateh Ali Khan.mp3"
+      ],
+      "cover": "cover.jpeg",
+      "info": "info.json"
+    },
+    {
+      "name": "nfak_remix",
+      "songs": [
+        "Aag Daman Mein Lag Jaye Gi (Remix) - Nusrat Fateh Ali Khan.mp3",
+        "Aaj Koi Baat Ho Gayi (Slap House Remix) - Nusrat Fateh Ali Khan.mp3",
+        "Aaj Koi Baat Ho Gayi - Lofi Remix.mp3",
+        "Barson Ke Intezar Ka (Remix) - Nusrat Fateh Ali Khan.mp3",
+        "Mere Rashq E Qamar (Remix) - Nusrat Fateh Ali Khan.mp3",
+        "Unki Taraf Se Tarq e Mulaqat (Remix) - Nusrat Fateh Ali Khan.mp3",
+        "Yara Dak Le Khooni Akhiyan Nu (Afternight Mix) - Nusrat Fateh Ali Khan.mp3",
+        "Yara Dak Le Khooni Akhiyan Nu (Remix) - Nusrat Fateh Ali Khan.mp3"
+      ],
+      "cover": "cover.jpeg",
+      "info": "info.json"
+    },
+    {
+      "name": "quran_recitation",
+      "songs": [
+        "Surah Al-Fatiha -  Qari Muhammad Ateeq Attari.mp3",
+        "Surah AL-Mulk -  Qari Muhammad Ateeq Attari.mp3",
+        "Surah Ar-Rahman  - Qari Muhammad Ateeq Attari.mp3",
+        "Surah Muzammil -  Qari Muhammad Ateeq Attari.mp3",
+        "Surah Yasin (Yaseen) - Qari Muhammad Ateeq Attari.mp3"
+      ],
+      "cover": "cover.jpeg",
+      "info": "info.json"
+    },
+    {
+      "name": "songs",
+      "songs": [
+        "Baari - Bilal Saeed.mp3",
+        "Dancing With Your Ghost - Sasha Alex Sloan.mp3",
+        "Dandelions - Ruth B..mp3",
+        "Faasle - Aditya Rikhari.mp3",
+        "Hasi (Female Version) - Ami Mishra.mp3",
+        "Kahani Suno 2.0 - Kaifi Khalil.mp3",
+        "Tu hai kahan - AUR.mp3",
+        "Your Eyes - Barney Sku.mp3"
+      ],
+      "cover": "cover.jpeg",
+      "info": "info.json"
+    }
+  ]
+}

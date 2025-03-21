@@ -312,7 +312,7 @@ body {
 
 .song-name {
   max-height: 41px;
-  word-break: break-all;
+  /* word-break: break-all; */
   overflow: hidden;
   line-height: 1.3em;
 }
@@ -439,18 +439,20 @@ input[type="range"]:focus::-moz-range-thumb {
   }
 }
 
+@media (max-width: 1040px) {
+  .artist-name {
+    font-size: 8px;
+    /* font-weight: 200; */
+    word-wrap: break-word;
+    word-break: unset;
+  }
+}
+
 @media (max-width: 900px) {
   .song-name {
     font-size: 12px;
     line-height: 1.2em;
     max-height: 43px;
-  }
-
-  .artist-name {
-    font-size: 12px;
-    /* font-weight: 200; */
-    word-wrap: break-word;
-    word-break: unset;
   }
 }
 
@@ -484,10 +486,6 @@ input[type="range"]:focus::-moz-range-thumb {
 
   .song-name {
     font-size: 12px;
-  }
-
-  .artist-name {
-    font-size: 8px;
   }
 
   .name {
