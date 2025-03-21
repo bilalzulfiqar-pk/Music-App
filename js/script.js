@@ -317,6 +317,10 @@ nextButton.addEventListener("click", () => {
 
         audio.src = path;
         audio.play();
+
+        if (!audio.paused) {
+          playButton.src = "./svg/pause.svg";
+        }
       }
     }
   }
